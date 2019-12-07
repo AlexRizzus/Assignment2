@@ -38,10 +38,8 @@
 	<module name="FileLength">
 	    <property name="max" value="2000"/>
 	</module>
-	<module name="FileTabCharacter">
-	    <property name="eachLine" value="true"/>
-	</module>
+	<module name="FileTabCharacter"/>
 	<module name="Header">
-	    <property name="header" value="////////////////////////////////////////////////////////////////////\n// Rizzo Alessandro 1162429 \n////////////////////////////////////////////////////////////////////"/>
+	    <property name="header" value="////////////////////////////////////////////////////////////////////\n// Alessandro Rizzo 1162429 \n////////////////////////////////////////////////////////////////////"/>
 	</module>
 </module>
