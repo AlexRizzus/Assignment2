@@ -15,10 +15,6 @@ public class MenuItem {
         this.price = p;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public itemType getType() {
         return item;
     }
