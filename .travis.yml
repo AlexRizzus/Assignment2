@@ -8,3 +8,4 @@ directories:
   - $HOME/.m2
 script:
   - mvn clean install
+  - mvn clean test jacoco:report coveralls:report -DrepoToken=$COVERALLSTOKEN
