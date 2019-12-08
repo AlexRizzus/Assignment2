@@ -16,6 +16,7 @@ import org.junit.rules.ExpectedException;
 
 public class SandwichShopManagerTest {
     private List<MenuItem> itemsOrdered = new ArrayList<MenuItem>();
+    
     @Test
     public void Bill_test_with_no_conditions() {
         itemsOrdered = new ArrayList<MenuItem>();
@@ -30,6 +31,7 @@ public class SandwichShopManagerTest {
             exc.getMessage();
         }
     }
+    
     @Test
     public void Bill_test_piu_di_cinque_panini() {
     	itemsOrdered = new ArrayList<MenuItem>();
@@ -48,6 +50,7 @@ public class SandwichShopManagerTest {
              exc.getMessage();
          }
     }
+    
     @Test
     public void Bill_test_piu_di_cinquanta_euro() {
     	itemsOrdered = new ArrayList<MenuItem>();
@@ -71,8 +74,10 @@ public class SandwichShopManagerTest {
          }
     	
     }
+    
     @Rule
     public ExpectedException exception = ExpectedException.none();
+    
     @Test
     public void Bill_test_piu_di_trenta_panini() throws TakeAwayBillException{
     	itemsOrdered = new ArrayList<MenuItem>();
@@ -116,6 +121,19 @@ public class SandwichShopManagerTest {
 
         bill.getOrderPrice(itemsOrdered);
     	
+    }
+    
+    @Test
+    public void Bill_test_con_commissione() {
+        itemsOrdered = new ArrayList<MenuItem>();
+        SandwichShopManager bill = new SandwichShopManager();
+        itemsOrdered.add(new MenuItem("Panino primavera",MenuItem.itemType.Panino, 3.50));
+        itemsOrdered.add(new MenuItem("Panino vegetariano",MenuItem.itemType.Panino, 4.50));
+        try {
+           assertEquals(8.50, bill.getOrderPrice(itemsOrdered), 0.0);
+        } catch (TakeAwayBillException exc) {
+            exc.getMessage();
+        }
     }
 
 }

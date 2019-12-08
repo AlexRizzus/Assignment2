@@ -27,6 +27,10 @@ public class SandwichShopManager implements TakeAwayBill{
              discount = itemsOrdered.stream().filter(s -> s.getType() == MenuItem.itemType.Panino)
              .mapToDouble(d -> d.getPrice()).min().orElse(0.00)/ 2.0;
         }
+        if(total < 10)
+        {
+             total += 0.5;
+        }
         return total - discount;
     }
 }
