@@ -15,7 +15,7 @@ import org.junit.Test;
 public class SandwichShopManagerTest {
     private List<MenuItem> itemsOrdered = new ArrayList<MenuItem>();
     @Test
-    public void Bill_test_with_few_items() {
+    public void Bill_test_with_no_conditions() {
         itemsOrdered = new ArrayList<MenuItem>();
         SandwichShopManager bill = new SandwichShopManager();
         itemsOrdered.add(new MenuItem("Panino primavera",MenuItem.itemType.Panino, 3.50));
@@ -27,6 +27,25 @@ public class SandwichShopManagerTest {
         } catch (TakeAwayBillException exc) {
             exc.getMessage();
         }
+    }
+    @Test
+    public void Bill_test_piu_di_cinque_panini() {
+    	itemsOrdered = new ArrayList<MenuItem>();
+    	SandwichShopManager bill = new SandwichShopManager();
+    	itemsOrdered.add(new MenuItem("Panino primavera",MenuItem.itemType.Panino, 3.50));
+        itemsOrdered.add(new MenuItem("Panino vegetariano",MenuItem.itemType.Panino, 4.50));
+        itemsOrdered.add(new MenuItem("Panino funghi e prosciutto",MenuItem.itemType.Panino, 3.50));
+        itemsOrdered.add(new MenuItem("Panino salsiccia e peperoni",MenuItem.itemType.Panino, 4.50));
+        itemsOrdered.add(new MenuItem("Panino Mozzarella e insalata",MenuItem.itemType.Panino, 3.00));
+        itemsOrdered.add(new MenuItem("Panino Bertazzo",MenuItem.itemType.Panino, 6.50));
+        itemsOrdered.add(new MenuItem("Patatine",MenuItem.itemType.Fritto, 2.00));
+        itemsOrdered.add(new MenuItem("Coca Cola",MenuItem.itemType.Bevanda, 1.00));
+        try {
+            assertEquals(27.0, bill.getOrderPrice(itemsOrdered), 0.0);
+         } catch (TakeAwayBillException exc) {
+             exc.getMessage();
+         }
+    	
     }
 
 }
