@@ -10,7 +10,9 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class SandwichShopManagerTest {
     private List<MenuItem> itemsOrdered = new ArrayList<MenuItem>();
@@ -67,6 +69,52 @@ public class SandwichShopManagerTest {
          } catch (TakeAwayBillException exc) {
              exc.getMessage();
          }
+    	
+    }
+    @Rule
+    public ExpectedException exception = ExpectedException.none();
+    @Test
+    public void Bill_test_piu_di_trenta_panini() throws TakeAwayBillException{
+    	itemsOrdered = new ArrayList<MenuItem>();
+    	SandwichShopManager bill = new SandwichShopManager();
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Piccolo",MenuItem.itemType.Panino, 4.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+
+    	exception.expect(TakeAwayBillException.class);
+        exception.expectMessage("sono stati ordinati più di 30 panini");
+
+        bill.getOrderPrice(itemsOrdered);
     	
     }
 
