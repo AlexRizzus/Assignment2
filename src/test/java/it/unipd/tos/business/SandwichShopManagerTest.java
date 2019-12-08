@@ -45,6 +45,28 @@ public class SandwichShopManagerTest {
          } catch (TakeAwayBillException exc) {
              exc.getMessage();
          }
+    }
+    @Test
+    public void Bill_test_piu_di_cinquanta_euro() {
+    	itemsOrdered = new ArrayList<MenuItem>();
+    	SandwichShopManager bill = new SandwichShopManager();
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Piccolo",MenuItem.itemType.Panino, 4.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	itemsOrdered.add(new MenuItem("Panino Carnivoro",MenuItem.itemType.Panino, 6.00));
+    	try {
+            assertEquals(61.0, bill.getOrderPrice(itemsOrdered), 0.0);
+         } catch (TakeAwayBillException exc) {
+             exc.getMessage();
+         }
     	
     }
 

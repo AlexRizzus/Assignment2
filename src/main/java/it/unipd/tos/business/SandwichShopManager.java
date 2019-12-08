@@ -12,8 +12,11 @@ public class SandwichShopManager implements TakeAwayBill{
 
     @Override
     public double getOrderPrice(List<MenuItem> itemsOrdered) throws TakeAwayBillException{
-
         double total = itemsOrdered.stream().mapToDouble(x -> x.getPrice()).sum();
+        if(total > 50.0)
+        {
+        total = total * 0.90;
+        }
         double discount = 0;
         if(itemsOrdered.stream().filter(s -> s.getType() == MenuItem.itemType.Panino).count() > 5)
         {
